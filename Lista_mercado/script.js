@@ -1,7 +1,7 @@
 const input = window.document.getElementById("input");
 const ul = window.document.querySelector("ul");
 const valor_local = localStorage.getItem("registo");
-const db_lista_li = JSON.parse( window.localStorage.getItem)("lista");
+const db_lista_li = JSON.parse( window.localStorage.getItem("lista"));
 
 db_lista_li.forEach((item) => adicionar(item));
 
@@ -18,12 +18,18 @@ function adicionar(item) {
     if(!item){
         adiciona_lista();
     }
+    if(item){
+        if(item.checked){
+            li.setAttribute("class", "checked")
+        }
+    }
 
     input.value = " ";
     input.focus();
 }
 window.document.querySelector("ul").addEventListener("click", (e) => {
-    e.target.classList.toggle("checked")
+    e.target.classList.toggle("checked");
+    adiciona_lista();
 });
 
 window.document.getElementById("input").addEventListener("keypress", (e) => {
@@ -37,12 +43,12 @@ window.document.addEventListener("contextmenu", (e) =>{
         e.target.remove();
     }
 });
+
 function adiciona_lista(){
     const lista_de_li = window.document.querySelectorAll("li");
     const lista = [];
     lista_de_li.forEach((item) => {
-         lista.push({texto: item.innerText});
+         lista.push({texto: item.innerText, checked: item.className == "checked"});
     });
-
     window.localStorage.setItem("lista", JSON.stringify(lista));
 }
