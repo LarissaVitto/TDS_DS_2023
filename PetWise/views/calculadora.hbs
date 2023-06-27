@@ -1,0 +1,172 @@
+<style>
+    body{
+    padding: 0;
+    margin: 0;
+    background-color: #a366ce;
+}
+#login{
+    display: flex;   
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #fff;
+}
+.card{
+    background-color: rgba(19, 19, 19, 0.3);
+    padding: 40px;
+    border-radius: 2px;
+    width: 700px;
+    margin-top: 200px;
+}
+.card-content label{
+    color: #fff;
+    font-size: 12px;
+    opacity: 0.8;
+}
+.card-content input{
+    margin-top: 10px;
+    padding: 0 5px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #e1e1e1;
+    outline: none;
+}
+.card-content-area{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0px;
+}
+.card-footer{
+    display: flex;
+    flex-direction: column;
+}
+.card-footer .submit{
+   width: 100%;
+   height: 40px;
+   background-color: #a13854;
+   border: none;
+   color: #e1e1e1;
+}
+.card-footer a{
+    text-align: center;
+    font-size: 12px;
+    opacity: 0.8;
+    color: #fff;
+    text-decoration: none;
+}
+.doguin{
+    display: flex;
+    width: 500px;
+    margin-right: 35px;
+}
+.demo{
+    text-align: center;
+}
+h1{
+    font-size: medium;
+}
+.text{
+    position: absolute;
+    margin-left: 450px;
+    margin-top: 50px;
+}
+.tee{
+    position: absolute;
+    margin-top: 50px;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.bnt{
+      width: 100%;
+            height: 100%;
+            background-color: #a13887;
+            border-radius: 20px;
+            text-align: center;
+            border: none;
+            color: #fff;
+}
+</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculadora</title>
+</head>
+<body>
+    <div id="login">
+        <img src="https://www.organnact.com.br/wp-content/uploads/2022/09/welsh-corgi-lying-on-floor-with-bowl-full-of-dog-f-2021-08-29-22-37-08-utc-1-1-1024x684.jpg" class="doguin">
+        <form class="card">
+            <div class="card-header">
+                <h2>CALCULADORA DE QUANTIDADE DIÁRIA RECOMENDADA</h2>
+                <h4>Se você tem dúvida de quanto alimento seu amigo pet necessita diariamente, utilize a calculadora e fique por dentro.</h4>
+            </div>
+            <div class="card-content">
+                <div class="card-content-area">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" autocomplete="off">
+                </div>
+                 <div class="card-content-area">
+                    <label for="idade">Idade</label>
+                    <input type="number" id="idade" autocomplete="off">
+                </div>
+                <div class="card-content-area">
+                    <label for="raca">Raça</label>
+                    <input type="text" id="raca" autocomplete="off">
+                </div>
+                <div class="card-content-area">
+                    <label for="peso">Peso(kg)</label>
+                    <input type="number" id="peso" autocomplete="off">
+                </div>
+                <div class="card-content-area">
+                    <label for="porte">Porte</label>
+                    <input type="text" id="porte" autocomplete="off">
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="bnt" type="button" onclick="calcular()">Calcular</button>
+                <h1 class="tee">Seu Pet deverá comer</h1>
+                <br>
+                <h1 id="demo" class="demo">(calcule para saber a quantidade)</h1>
+                <h1 class="text">gramas por dia</h1>
+            </div>
+             <div class="card-footer">
+                <a class="bnt" href="/petwise/inicial">Voltar</a>
+            </div>
+            
+<script>
+function calcular() {
+  
+  let x = document.getElementById("peso").value;
+  let y
+  let text;
+  if (isNaN(x)|| 0.1<x && x<=3.9) {
+    text = "74";
+    
+   }else if (4<=x && x<7.9){
+    text = "125"; 
+   
+  } else if (8<=x && x<19.9){
+    text = "250"; 
+   
+  } else if (20<=x && x<39.9){
+    text = "450"; 
+   
+  } else if (40<=x){
+   y = x * 0.015 *1000;
+    text = y;
+   
+  } else if (0>x){ 
+    text = "o animal pode ter peso negativo"; 
+
+  }else {
+    text = "(insira o peso novamente)";
+  }
+  document.getElementById("demo").innerHTML = text;
+}
+</script>
